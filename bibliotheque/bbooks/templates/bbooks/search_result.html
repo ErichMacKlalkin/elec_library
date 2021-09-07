@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'bbooks/layout.css' %}">
+    <title>Результат Поиска</title>
+</head>
+
+<body>
+<h1 style="text-transform:none;white-space:nowrap;
+    margin-top: 50px;
+    margin-left: 45%;
+    margin-right: 45%;">Найденные книги</h1>
+<ul>
+     {% if object_list %}
+  {% for type in object_list %}
+    <li style="padding:20px;">
+      {{ type.title }}, {{ type.content }}, {{ type.price }}, {{ type.author_name }},
+    </li>
+  {% endfor %}
+    {% else %}
+        <p>Не найдено книг по вашему запросу.<br>Попробуйте повторить запрос с другой формулировкой. Поиск чувствителен к регистру.</p>
+    {% endif %}
+</ul>
+
+
+</body>
+</html>
